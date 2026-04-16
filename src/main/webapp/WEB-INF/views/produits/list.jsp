@@ -50,11 +50,9 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>ID</th>
+                                    <th>Référence</th>
                                     <th>Nom</th>
-                                    <th>Description</th>
-                                    <th>Prix</th>
-                                    <th>Quantite</th>
-                                    <th>Date creation</th>
+                                    <th>Stock</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -62,13 +60,11 @@
                                 <c:forEach var="produit" items="${produits}">
                                     <tr>
                                         <td>${produit.id}</td>
-                                        <td><strong>${produit.nom}</strong></td>
-                                        <td>${produit.description}</td>
-                                        <td><fmt:formatNumber value="${produit.prix}" pattern="#,##0.00"/> EUR</td>
-                                        <td>${produit.quantite}</td>
-                                        <td><fmt:formatDate value="${produit.createdAt}" pattern="dd/MM/yyyy"/></td>
+                                        <td>${produit.ref}</td>
+                                        <td><strong>${produit.name}</strong></td>
+                                        <td>${produit.stock}</td>
                                         <td>
-                                            <a href="/api/produits/edit/${produit.id}" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
+                                            <a href="/produits/edit/${produit.id}" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
                                             <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                         </td>
                                     </tr>

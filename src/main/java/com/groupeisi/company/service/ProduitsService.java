@@ -27,6 +27,12 @@ public class ProduitsService {
         return ProduitsMapper.toDto(saved);
     }
 
+    public ProduitsDTO getProduitById(Long id) {
+        return produitsRepository.findById(id)
+                .map(ProduitsMapper::toDto)
+                .orElse(null);
+    }
+
     public ProduitsDTO updateProduit(ProduitsDTO dto, Long id) {
         Produits entity = ProduitsMapper.toEntity(dto);
         entity.setId(id);

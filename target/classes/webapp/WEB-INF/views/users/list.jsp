@@ -35,7 +35,8 @@
                     <h2 class="fw-bold">Gestion des utilisateurs</h2>
                     <div>
                         <a href="/dashboard" class="btn btn-outline-secondary me-2">Retour</a>
-                        <a href="/logout" class="btn btn-outline-danger">Deconnexion</a>
+                        <a href="/users/form" class="btn btn-primary"><i class="bi bi-plus-circle me-1"></i>Ajouter un utilisateur</a>
+                        <a href="/logout" class="btn btn-outline-danger ms-2">Deconnexion</a>
                     </div>
                 </div>
                 
@@ -58,7 +59,7 @@
                                         <td>${user.id}</td>
                                         <td>${user.email}</td>
                                         <td>
-                                            <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></button>
+                                            <a href="/users/edit/${user.id}" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
                                             <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                         </td>
                                     </tr>

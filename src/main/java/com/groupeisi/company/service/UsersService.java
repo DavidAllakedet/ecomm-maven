@@ -1,6 +1,8 @@
 package com.groupeisi.company.service;
 
+import com.groupeisi.company.dto.UsersDTO;
 import com.groupeisi.company.entities.Users;
+import com.groupeisi.company.mapper.UsersMapper;
 import com.groupeisi.company.repository.UsersRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,5 +26,28 @@ public class UsersService {
 
     public List<Users> getAllUsers() {
         return usersRepository.findAll();
+    }
+
+    public UsersDTO getUserById(Long id) {
+        return usersRepository.findById(id)
+                .map(UsersMapper::toDto)
+                .orElse(null);
+    }
+
+    public UsersDTO saveUser(UsersDTO dto) {
+        Users entity = UsersMapper.toEntity(dto);
+        Users saved = usersRepository.save(entity);
+        return UsersMapper.toDto(saved);
+    }
+
+    public UsersDTO updateUser(UsersDTO dto, Long id) {
+        Users entity = UsersMapper.toEntity(dto);
+        entity.setId(id);
+        Users updated = usersRepository.save(entity);
+        return UsersMapper.toDto(updated);
+    }
+
+    public void deleteUser(Long id) {
+        usersRepository.deleteById(id);
     }
 }

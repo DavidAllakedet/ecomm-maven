@@ -39,6 +39,7 @@
                     <h2 class="fw-bold">Gestion des ventes</h2>
                     <div>
                         <a href="/dashboard" class="btn btn-outline-secondary me-2">Retour</a>
+                        <a href="/ventes/form" class="btn btn-primary"><i class="bi bi-plus-circle me-1"></i>Ajouter une vente</a>
                         <a href="/logout" class="btn btn-outline-danger ms-2">Deconnexion</a>
                     </div>
                 </div>
@@ -52,12 +53,9 @@
                             <thead class="table-light">
                                 <tr>
                                     <th>ID</th>
-                                    <th>Produit</th>
-                                    <th>Quantite</th>
-                                    <th>Prix unitaire</th>
-                                    <th>Total</th>
-                                    <th>Date</th>
-                                    <th>Statut</th>
+                                    <th>ID Produit</th>
+                                    <th>Quantité</th>
+                                    <th>Date de vente</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -65,18 +63,11 @@
                                 <c:forEach var="vente" items="${ventes}">
                                     <tr>
                                         <td>${vente.id}</td>
-                                        <td>${vente.produit != null ? vente.produit.nom : 'N/A'}</td>
-                                        <td>${vente.quantite}</td>
-                                        <td><fmt:formatNumber value="${vente.prixUnitaire}" pattern="#,##0.00"/> EUR</td>
-                                        <td><strong><fmt:formatNumber value="${vente.quantite * vente.prixUnitaire}" pattern="#,##0.00"/> EUR</strong></td>
-                                        <td><fmt:formatDate value="${vente.dateVente}" pattern="dd/MM/yyyy HH:mm"/></td>
+                                        <td>${vente.productId}</td>
+                                        <td>${vente.quantity}</td>
+                                        <td><fmt:formatDate value="${vente.dateP}" pattern="dd/MM/yyyy HH:mm"/></td>
                                         <td>
-                                            <span class="status-badge ${vente.statut == 'COMPLETED' ? 'status-completed' : vente.statut == 'CANCELLED' ? 'status-cancelled' : 'status-pending'}">
-                                                ${vente.statut}
-                                            </span>
-                                        </td>
-                                        <td>
-                                            <button class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-eye"></i></button>
+                                            <a href="/ventes/edit/${vente.id}" class="btn btn-sm btn-outline-primary me-1"><i class="bi bi-pencil"></i></a>
                                             <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
                                         </td>
                                     </tr>

@@ -27,6 +27,12 @@ public class AchatsService {
         return AchatsMapper.toDto(saved);
     }
 
+    public AchatsDTO getAchatById(Long id) {
+        return achatsRepository.findById(id)
+                .map(AchatsMapper::toDto)
+                .orElse(null);
+    }
+
     public AchatsDTO updateAchats(AchatsDTO dto, Long id) {
         Achats entity = AchatsMapper.toEntity(dto);
         entity.setId(id);

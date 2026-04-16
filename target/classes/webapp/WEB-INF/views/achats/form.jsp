@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>${produit != null ? 'Modifier' : 'Ajouter'} un produit - E-Commerce</title>
+    <title>${achat != null ? 'Modifier' : 'Ajouter'} un achat - E-Commerce</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.0/font/bootstrap-icons.css" rel="stylesheet">
     <style>
@@ -24,48 +24,48 @@
                 <nav class="mt-3">
                     <a href="/dashboard"><i class="bi bi-house-door me-2"></i>Dashboard</a>
                     <a href="/users"><i class="bi bi-people me-2"></i>Utilisateurs</a>
-                    <a href="/produits" class="active"><i class="bi bi-box me-2"></i>Produits</a>
-                    <a href="/achats"><i class="bi bi-cart me-2"></i>Achats</a>
+                    <a href="/produits"><i class="bi bi-box me-2"></i>Produits</a>
+                    <a href="/achats" class="active"><i class="bi bi-cart me-2"></i>Achats</a>
                     <a href="/ventes"><i class="bi bi-cash me-2"></i>Ventes</a>
                 </nav>
             </div>
             <div class="col-md-10 p-4">
                 <div class="d-flex justify-content-between align-items-center mb-4">
-                    <h2 class="fw-bold">${produit != null ? 'Modifier' : 'Ajouter'} un produit</h2>
+                    <h2 class="fw-bold">${achat != null ? 'Modifier' : 'Ajouter'} un achat</h2>
                     <div>
-                        <a href="/produits" class="btn btn-outline-secondary">Retour</a>
+                        <a href="/achats" class="btn btn-outline-secondary">Retour</a>
                         <a href="/logout" class="btn btn-outline-danger ms-2">Deconnexion</a>
                     </div>
                 </div>
                 
                 <div class="card">
                     <div class="card-body">
-                        <form action="${produit != null ? '/produits/update' : '/produits/save'}" method="post">
-                            <c:if test="${produit != null}">
-                                <input type="hidden" name="id" value="${produit.id}"/>
+                        <form action="${achat != null ? '/achats/update' : '/achats/save'}" method="post">
+                            <c:if test="${achat != null}">
+                                <input type="hidden" name="id" value="${achat.id}"/>
                             </c:if>
                             
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="ref" class="form-label">Référence</label>
-                                    <input type="text" class="form-control" id="ref" name="ref" 
-                                           value="${produit != null ? produit.ref : ''}" required>
+                                    <label for="productId" class="form-label">ID Produit</label>
+                                    <input type="number" class="form-control" id="productId" name="productId" 
+                                           value="${achat != null ? achat.productId : ''}" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="name" class="form-label">Nom du produit</label>
-                                    <input type="text" class="form-control" id="name" name="name" 
-                                           value="${produit != null ? produit.name : ''}" required>
+                                    <label for="quantity" class="form-label">Quantité</label>
+                                    <input type="number" step="0.01" class="form-control" id="quantity" name="quantity" 
+                                           value="${achat != null ? achat.quantity : '0'}" required>
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="stock" class="form-label">Stock</label>
-                                <input type="number" step="0.01" class="form-control" id="stock" name="stock" 
-                                       value="${produit != null ? produit.stock : '0'}" required>
+                                <label for="dateP" class="form-label">Date d'achat</label>
+                                <input type="datetime-local" class="form-control" id="dateP" name="dateP" 
+                                       value="${achat != null ? achat.dateP : ''}" required>
                             </div>
                             
                             <div class="d-flex justify-content-end gap-2">
-                                <a href="/produits" class="btn btn-secondary">Annuler</a>
+                                <a href="/achats" class="btn btn-secondary">Annuler</a>
                                 <button type="submit" class="btn btn-primary">
                                     <i class="bi bi-save me-1"></i>Enregistrer
                                 </button>

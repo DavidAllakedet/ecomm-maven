@@ -27,6 +27,12 @@ public class VentesService {
         return VentesMapper.toDto(saved);
     }
 
+    public VentesDTO getVenteById(Long id) {
+        return ventesRepository.findById(id)
+                .map(VentesMapper::toDto)
+                .orElse(null);
+    }
+
     public VentesDTO updateVentes(VentesDTO dto, Long id) {
         Ventes entity = VentesMapper.toEntity(dto);
         entity.setId(id);

@@ -122,9 +122,9 @@
                         <div class="card p-4">
                             <h5 class="fw-bold mb-3"><i class="bi bi-plus-circle me-2"></i>Actions rapides</h5>
                             <div class="d-grid gap-2">
-                                <a href="/api/produits" class="btn btn-outline-primary">Ajouter un produit</a>
-                                <a href="/api/achats" class="btn btn-outline-success">Enregistrer un achat</a>
-                                <a href="/api/ventes" class="btn btn-outline-warning">Enregistrer une vente</a>
+                                <a href="/produits" class="btn btn-outline-primary">Ajouter un produit</a>
+                                <a href="/achats" class="btn btn-outline-success">Enregistrer un achat</a>
+                                <a href="/ventes" class="btn btn-outline-warning">Enregistrer une vente</a>
                             </div>
                         </div>
                     </div>
