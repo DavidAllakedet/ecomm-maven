@@ -21,12 +21,14 @@ public class ProduitsService {
                 .toList();
     }
 
+    @SuppressWarnings("null")
     public ProduitsDTO saveProduit(ProduitsDTO dto) {
         Produits entity = ProduitsMapper.toEntity(dto);
         Produits saved = produitsRepository.save(entity);
         return ProduitsMapper.toDto(saved);
     }
 
+    @SuppressWarnings("null")
     public ProduitsDTO getProduitById(Long id) {
         return produitsRepository.findById(id)
                 .map(ProduitsMapper::toDto)
@@ -40,6 +42,7 @@ public class ProduitsService {
         return ProduitsMapper.toDto(updated);
     }
 
+    @SuppressWarnings("null")
     public void deleteProduit(Long id) {
         produitsRepository.deleteById(id);
     }

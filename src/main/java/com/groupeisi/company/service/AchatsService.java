@@ -21,12 +21,14 @@ public class AchatsService {
                 .toList();
     }
 
+    @SuppressWarnings("null")
     public AchatsDTO saveAchats(AchatsDTO dto) {
         Achats entity = AchatsMapper.toEntity(dto);
         Achats saved = achatsRepository.save(entity);
         return AchatsMapper.toDto(saved);
     }
 
+    @SuppressWarnings("null")
     public AchatsDTO getAchatById(Long id) {
         return achatsRepository.findById(id)
                 .map(AchatsMapper::toDto)
@@ -40,6 +42,7 @@ public class AchatsService {
         return AchatsMapper.toDto(updated);
     }
 
+    @SuppressWarnings("null")
     public void deleteAchats(Long id) {
         achatsRepository.deleteById(id);
     }

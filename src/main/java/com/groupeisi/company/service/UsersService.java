@@ -20,6 +20,7 @@ public class UsersService {
         return usersRepository.findByEmail(email);
     }
 
+    @SuppressWarnings("null")
     public Users save(Users user) {
         return usersRepository.save(user);
     }
@@ -28,12 +29,14 @@ public class UsersService {
         return usersRepository.findAll();
     }
 
+    @SuppressWarnings("null")
     public UsersDTO getUserById(Long id) {
         return usersRepository.findById(id)
                 .map(UsersMapper::toDto)
                 .orElse(null);
     }
 
+    @SuppressWarnings("null")
     public UsersDTO saveUser(UsersDTO dto) {
         Users entity = UsersMapper.toEntity(dto);
         Users saved = usersRepository.save(entity);
@@ -47,6 +50,7 @@ public class UsersService {
         return UsersMapper.toDto(updated);
     }
 
+    @SuppressWarnings("null")
     public void deleteUser(Long id) {
         usersRepository.deleteById(id);
     }

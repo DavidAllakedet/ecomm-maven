@@ -21,12 +21,14 @@ public class VentesService {
                 .toList();
     }
 
+    @SuppressWarnings("null")
     public VentesDTO saveVentes(VentesDTO dto) {
         Ventes entity = VentesMapper.toEntity(dto);
         Ventes saved = ventesRepository.save(entity);
         return VentesMapper.toDto(saved);
     }
 
+    @SuppressWarnings("null")
     public VentesDTO getVenteById(Long id) {
         return ventesRepository.findById(id)
                 .map(VentesMapper::toDto)
@@ -40,6 +42,7 @@ public class VentesService {
         return VentesMapper.toDto(updated);
     }
 
+    @SuppressWarnings("null")
     public void deleteVentes(Long id) {
         ventesRepository.deleteById(id);
     }
